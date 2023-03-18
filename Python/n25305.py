@@ -1,6 +1,10 @@
-N,k =map(int, input().split())
+arr=[]
+r =''
+for i in range(5):
+    arr.append(input())
+for i in range(15):
+    for j in range(5):
+        if len(arr[j])>i:
+            r+= arr[j][i]
 
-a_list = list(map(int,input().split()))
-
-a_list.sort(reverse=True)
-print(a_list[k-1])
+print(r)

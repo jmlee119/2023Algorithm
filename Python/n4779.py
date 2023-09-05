@@ -19,7 +19,4 @@ while True:
         print("".join(list))
     except:
         break
-# n = int(sys.stdin.readline())
-# list= ["-" for i in range(3**n)]
-# Kan(list,0,len(list))
-# print("".join(list))
+

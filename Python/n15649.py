@@ -12,5 +12,4 @@ def back():
     s.append(i)
     back()
     s.pop()
-
 back()

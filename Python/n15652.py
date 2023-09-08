@@ -7,8 +7,6 @@ def back():
     return
 
   for i in range(1, n + 1): 
-    if len(s) != 0 and i < s[len(s)-1]: continue
-    
     s.append(i)
     back()
     s.pop()

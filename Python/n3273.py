@@ -10,9 +10,7 @@ start, end = 0, n - 1
 while start < end:
     print(start, end)
     sum = a[start] + a[end]
-    # print(sum)
     if sum == x:
-        print("Dd")
         count += 1
         start += 1
     elif sum < x:

@@ -8,7 +8,6 @@ count = 0
 start, end = 0, n - 1
 
 while start < end:
-    print(start, end)
     sum = a[start] + a[end]
     if sum == x:
         count += 1

@@ -17,7 +17,6 @@ for _ in range(T):
                 break
     # print("answer: ", answer)
     else:
-            
         if not answer:
             print("YES")
         else:

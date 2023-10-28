@@ -1,0 +1,1 @@
+alphabet.count(s[int(left) : int(right) + 1])

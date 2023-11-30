@@ -12,6 +12,7 @@ while True:
     pro = list(product(arr, repeat=lenght))
     for i in pro:
         ans = int("".join(i))
+
         if ans <= N:
             new_arr.append(ans)
     if lenght <= 1:

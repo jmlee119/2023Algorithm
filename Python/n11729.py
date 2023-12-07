@@ -1,15 +1,20 @@
 import sys
 
-def hanoi(top, fr , to,by):
-    if top ==1:
-        print(fr, to)
+input = sys.stdin.readline
+
+N = int(input())
+
+
+def hanoi(n, from_n, by_n, to_n):
+    if n == 1:
+        print(from_n, to_n)
         return
-    else :
-        hanoi (top-1,fr,by,to)
-        print(fr, to)
-        hanoi(top-1,by,to,fr)
+
+    else:
+        hanoi(n - 1, from_n, to_n, by_n)
+        print(from_n, to_n)
+        hanoi(n - 1, by_n, from_n, to_n)
 
 
-n = int(sys.stdin.readline())
-print(2**n -1)
-a = hanoi(n, 1,3,2)
+print(2**N - 1)
+hanoi(N, 1, 2, 3)

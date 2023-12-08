@@ -6,12 +6,15 @@ n = int(input())
 count = 0
 coin = [5, 2]
 
-for i in coin:
-    count = n // i
+while n > 0:
+    if n % 5 == 0:
+        count += n // 5
+        break
+    else:
+        n -= 2
+        count += 1
 
-    n = n - (i % count)
-
-if count == 0 and n != 0:
+if count == 0 or n < 0:
     print(-1)
 else:
     print(count)

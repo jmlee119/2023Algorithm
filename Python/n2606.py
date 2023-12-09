@@ -1,35 +1,33 @@
 import sys
-from collections import deque
 
 input = sys.stdin.readline
 
 computer = int(input())
 line = int(input())
+graph = [[] for i in range(computer + 1)]
 
-graph = [[] for _ in range(computer + 1)]
+visited = [False] * (computer + 1)
+
 for _ in range(line):
     a, b = map(int, input().split())
     graph[a].append(b)
     graph[b].append(a)
 
-visited = [False] * (computer + 1)
+cnt = 0
 
 
-def bfs(graph, start, visited):
-    count = 0
-    queue = deque([start])
+def dfs(start, visited, graph):
     visited[start] = True
-    while queue:
-        v = queue.popleft()
-        for i in graph[v]:
-            if not visited[i]:
-                count += 1
-                queue.append(i)
-                visited[i] = True
 
-    return count
+    global cnt
+
+    for i in graph[start]:
+        if not visited[i]:
+            cnt += 1
+            visited[i] = True
+            dfs(i, visited, graph)
 
 
-result = bfs(graph, 1, visited)
+dfs(1, visited, graph)
 
-print(result)
+print(cnt)

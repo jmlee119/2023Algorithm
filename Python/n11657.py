@@ -1,36 +1,40 @@
 import sys
 
+
 input = sys.stdin.readline
-inf = sys.maxsize
+INF = sys.maxsize
 
-n, m = map(int, input().split())
-graph = [[] for _ in range(n + 1)]
-dp = [inf] * (n + 1)
-dp[1] = 0
-isPossible = True
+N, M = map(int, input().split())
 
+graph = [[] for i in range(N + 1)]
+distance = [INF] * (N + 1)
+distance[1] = 0
 
-def bellmanFord():
-    global isPossible
-
-    for repeat in range(n):
-        for i in range(1, n + 1):
-            for n_n, wei in graph[i]:
-                if dp[i] != inf and dp[n_n] > dp[i] + wei:
-                    dp[n_n] = dp[i] + wei
-                    if repeat == n - 1:
-                        isPossible = False
-
-
-for _ in range(m):
+for _ in range(M):
     a, b, c = map(int, input().split())
     graph[a].append([b, c])
 
+ispossible = True
 
-bellmanFord()
 
-if not isPossible:
+def bellman_ford():
+    global ispossible
+    for repeat in range(N):
+        for now in range(1, N + 1):
+            for next, weight in graph[now]:
+                if distance[now] != INF and distance[next] > distance[now] + weight:
+                    distance[next] = distance[now] + weight
+                    if repeat == N - 1:
+                        ispossible = False
+
+
+bellman_ford()
+
+if not ispossible:
     print(-1)
 else:
-    for i in dp[2:]:
-        print(i if i != inf else -1)
+    for i in distance[2:]:
+        if i == INF:
+            print(-1)
+        else:
+            print(i)

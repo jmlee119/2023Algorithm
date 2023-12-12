@@ -53,5 +53,5 @@ for _ in range(Testcase):
             ans.append(i)
 
     ans.sort()
-
-    print(ans)
+    for i in ans:
+        print(i, end=" ")

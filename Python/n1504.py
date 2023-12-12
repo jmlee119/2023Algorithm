@@ -2,45 +2,48 @@ import sys
 import heapq
 
 input = sys.stdin.readline
-V, E = map(int, input().split())
 INF = int(1e9)
-graph = [[] * (V + 1) for _ in range(V + 1)]
-# graph = [[] for _ in range(V)]
+N, E = map(int, input().split())
+
+graph = [[] for i in range(N + 1)]
 
 for _ in range(E):
-    u, v, w = map(int, input().split())
-    graph[u].append((v, w))
-    graph[v].append((u, w))
+    a, b, c = map(int, input().split())
+    graph[a].append((c, b))
+    graph[b].append((c, a))
+
 v1, v2 = map(int, input().split())
-# print("graph : ", graph)
 
 
 def dijkstra(start):
+    distance = [INF] * (N + 1)
     q = []
     heapq.heappush(q, (0, start))
-    distance = [INF] * (V + 1)
-    distance[start] = 0
-    # print("q : ", q)
-    # print("distance : ", distance)
 
     while q:
         dist, now = heapq.heappop(q)
-        # print("dist, now :", dist, now)
+        distance[start] = 0
         if distance[now] < dist:
             continue
+
         for i in graph[now]:
-            cost = dist + i[1]
-            if cost < distance[i[0]]:
-                distance[i[0]] = cost
-                heapq.heappush(q, (cost, i[0]))
+            cost = i[0] + dist
+            if cost < distance[i[1]]:
+                distance[i[1]] = cost
+                heapq.heappush(q, (cost, i[1]))
     return distance
 
 
-first = dijkstra(1)
-v1_d = dijkstra(v1)
-v2_d = dijkstra(v2)
-# print(first, v1_d, v2_d)
-result = min(first[v1] + v1_d[v2] + v2_d[V], first[v2] + v2_d[v1] + v1_d[V])
+original = dijkstra(1)
+v1_distance = dijkstra(v1)
+v2_distance = dijkstra(v2)
+
+
+path1 = original[v1] + v1_distance[v2] + v2_distance[N]
+path2 = original[v2] + v2_distance[v1] + v1_distance[N]
+
+result = min(path1, path2)
+
 if result < INF:
     print(result)
 else:

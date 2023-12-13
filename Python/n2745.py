@@ -12,5 +12,3 @@ for i in range(len(N) - 1, -1, -1):
     result += (B**i) * JIN.index(N[i])
 
 print(result)
-
-# 60466175

@@ -5,4 +5,4 @@ while N > 0:
     s += str(JIN[N % B])
     N //= B
 
-print(s)
+print(s[::-1])

@@ -14,6 +14,6 @@ for i in range(N - 1):
 for i in range(N - 1):
     if arr[i] >= arr[i + 1]:
         decrease[i + 1] += decrease[i]
-print(increase[: N + 1])
-print(decrease[: N + 1])
+# print(increase[: N + 1])
+# print(decrease[: N + 1])
 print(max(max(increase), max(decrease)))

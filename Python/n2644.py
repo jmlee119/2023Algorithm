@@ -18,7 +18,7 @@ for _ in range(line):
 
 def dfs(num, depth):
     depth += 1
-    print(depth)
+    # print(depth)
     visited[num] = True
     if num == M:
         answer.append(depth)
